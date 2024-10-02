@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+    color: #1e293b;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background-color: #353648;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f0f4f8;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.bot {
+    background-color: #e2e8f0;
+    align-self: flex-start;
+}
+
+.user {
+    background-color: #818cf8;
+    color: white;
+    align-self: flex-end;
+}
+
+.input-area {
+    display: flex;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.send-btn {
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    background-color: #555;
+}
+
+/* Custom scrollbar */
+.chat-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
