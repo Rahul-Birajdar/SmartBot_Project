@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Chat History{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h2><center>Chat History</center></h2>
+    <ul>
+        {% for message, response, timestamp in history %}
+        <li>
+            <strong>{{ timestamp }}:</strong><br>
+            <strong>User:</strong> {{ message }}<br>
+            <strong>Bot:</strong> {{ response }}<br><br>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

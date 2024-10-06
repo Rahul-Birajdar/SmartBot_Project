@@ -1,56 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartBot Chatbot</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="main-container">
-        <div class="chat-header">
-            <h1 style="font-family: 'Arial', sans-serif;font-size: 34px; color: white;"> Chat with AI </h1>
-        </div>
-        <div class="chat-container" id="chat-container">
-            <div class="message bot">Hello! How can I assist you today?</div>
-        </div>
-        
-        <div class="input-area">
-            <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off">
-            <button class="send-btn" onclick="sendMessage()">➤</button>
-        </div>
+{% extends 'base.html' %}
+
+{% block title %}SmartBot{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="chat-header">
+        <h2 style="font-family: 'Arial', sans-serif; font-size: 34px; color: white;">SmartBot Chat</h2>
     </div>
+    <div id="chat-box" class="chat-container">
+        <!-- Chat messages will be displayed here -->
+        <div class="message bot-message">Hello! How can I assist you today?</div>
+    </div>
+    <div class="input-area">
+        <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off">
+        <button id="send-message" class="btn">➤</button>
+    </div>
+</div>
 
-    <script>
-        function sendMessage() {
-            const userInput = document.getElementById('user-input').value;
-            if (userInput.trim() === "") return;
-
-            const chatContainer = document.getElementById('chat-container');
-            chatContainer.innerHTML += `<div class="message user">${userInput}</div>`;
-            document.getElementById('user-input').value = "";
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-
-            fetch('/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ message: userInput })
-            })
-            .then(response => response.json())
-            .then(data => {
-                chatContainer.innerHTML += `<div class="message bot">${data.response}</div>`;
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            });
-        }
-
-        document.getElementById('user-input').addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                sendMessage();
-            }
-        });
-    </script>
-</body>
-</html>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
